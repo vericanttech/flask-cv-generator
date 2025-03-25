@@ -1,0 +1,78 @@
+# Python Virtual Environment
+.venv/
+venv/
+env/
+*.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logging and Databases
+*.log
+*.sqlite3
+*.db
+
+# Sensitive Information
+.env
+*.pem
+*.key
+
+# Flask Specifics
+instance/
+.webassets-cache
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Dependency Directories
+node_modules/
+jspm_packages/
+
+# Uploads and Media (if you have user-uploaded content)
+static/uploads/
+googleforms/
+
+# Compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Specific to your project's uploads
+uploads/
+
+# Backup files
+*.bak
+
+# Testing and Coverage
+.tox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+htmlcov/
+
+# Translations
+*.mo
+*.pot
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Flask Migrations (if using Flask-Migrate)
+migrations/

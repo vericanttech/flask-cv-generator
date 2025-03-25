@@ -1,0 +1,39 @@
+/* Custom Date Picker Styles */
+.custom-date-picker-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-date-picker {
+  min-width: 280px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-size: 14px;
+  background-color: #f8f9fa; /* Light gray background for better visibility */
+  border: 1px solid #e2e8f0; /* Subtle border */
+  border-radius: 6px; /* Rounded corners */
+}
+
+.days-grid div:hover {
+  background-color: #e2e6ea; /* Darker hover state for better contrast */
+  border-radius: 4px;
+}
+
+.days-grid div {
+  padding: 6px 0;
+}
+
+/* Optional: Add some color to the header area */
+.custom-date-picker .header {
+  background-color: #e9ecef; /* Slightly darker than the main background */
+  border-bottom: 1px solid #dee2e6;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .custom-date-picker {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+}

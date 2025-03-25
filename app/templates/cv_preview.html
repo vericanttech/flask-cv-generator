@@ -1,0 +1,447 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Prévisualisation du CV') }}{% endblock %}
+
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cv_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile_cv_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cv_print.css') }}" media="print">
+    <style>
+        [data-editable="true"] {
+            border-bottom: 1px dashed #3498db;
+            cursor: text;
+            transition: background-color 0.3s ease;
+        }
+        [data-editable="true"]:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        [data-editable="true"]:focus {
+            outline: 2px solid #3498db;
+            outline-offset: 3px;
+        }
+        .edit-hint {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+
+    <div class="actions-container actions-container--mobile">
+        <button id="downloadCV" class="btn-primary">{{ _('Télécharger PDF') }}</button>
+        <button id="customizeForJob" class="adapt-btn">{{ _('Adapter au poste') }}</button>
+    </div>
+
+    <div class="job-description-container" style="display: none;">
+        <div class="card">
+            <h3>{{ _('Personnaliser le CV pour un emploi spécifique') }}</h3>
+            <p class="description">{{ _('Collez la description du poste ci-dessous pour optimiser votre CV en fonction de celui-ci.') }}</p>
+
+            <div class="form-group">
+                <label for="jobDescription">{{ _('Description du poste') }}</label>
+                <textarea id="jobDescription" class="form-control" rows="6"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="careerGoals">{{ _('Objectifs de carrière') }} ({{ _('optionnel') }})</label>
+                <textarea id="careerGoals" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="actions">
+                <button id="cancelCustomization" class="btn-secondary">{{ _('Annuler') }}</button>
+                <button id="processCustomization" class="btn-primary">{{ _('Personnaliser mon CV') }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="customization-status" style="display: none;">
+        <div class="spinner"></div>
+        <p>{{ _('Personnalisation de votre CV en cours...') }}</p>
+    </div>
+
+    <div class="cv-container">
+        <div class="cv-content">
+            <!-- Left Column -->
+            <div class="cv-sidebar">
+                <div class="sidebar-content">
+                    <!-- Profile Photo -->
+                    {% if photo_path %}
+                    <div class="profile-photo">
+                        <img src="{{ url_for('static', filename=photo_path) }}" alt="Profile Photo">
+                    </div>
+                    {% endif %}
+
+                    <!-- Personal Information -->
+                    <div class="profile-section">
+                        <h1
+                            data-editable="true"
+                            data-field="personal_info.full_name"
+                            data-parent="personal_info"
+                            contenteditable="true"
+                        >{{ cv_data.personal_info.first_name }} {{ cv_data.personal_info.last_name }}</h1>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h2><span class="section-icon icon-contact"></span>{{ _('Contact') }}</h2>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <label>{{ _('Email') }}</label>
+                                    <span
+                                        data-editable="true"
+                                        data-field="personal_info.email"
+                                        data-parent="personal_info"
+                                        contenteditable="true"
+                                    >{{ cv_data.personal_info.email }}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <label>{{ _('Téléphone') }}</label>
+                                    <span
+                                        data-editable="true"
+                                        data-field="personal_info.phone"
+                                        data-parent="personal_info"
+                                        contenteditable="true"
+                                    >{{ cv_data.personal_info.phone }}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <label>{{ _('Adresse') }}</label>
+                                    <span
+                                        data-editable="true"
+                                        data-field="personal_info.address"
+                                        data-parent="personal_info"
+                                        contenteditable="true"
+                                    >{{ cv_data.personal_info.address }}</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-content">
+                                    <label>{{ _('Ville') }}</label>
+                                    <span
+                                        data-editable="true"
+                                        data-field="personal_info.city"
+                                        data-parent="personal_info"
+                                        contenteditable="true"
+                                    >{{ cv_data.personal_info.city }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    {% if cv_data.skills %}
+                    <div class="skills-section">
+                        <h2><span class="section-icon icon-skills"></span>{{ _('Compétences') }}</h2>
+                        {% for skill in cv_data.skills %}
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span
+                                    data-editable="true"
+                                    data-field="skills.{{ loop.index0 }}.skill"
+                                    data-parent="skills"
+                                    contenteditable="true"
+                                >{{ skill.skill.capitalize() }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Languages Section -->
+                    {% if cv_data.languages %}
+                    <div class="languages-section">
+                        <h2><span class="section-icon icon-languages"></span>{{ _('Langues') }}</h2>
+                        {% for language in cv_data.languages %}
+                        <div class="language-item">
+                            <div class="language-header">
+                                <span
+                                    data-editable="true"
+                                    data-field="languages.{{ loop.index0 }}.language"
+                                    data-parent="languages"
+                                    contenteditable="true"
+                                >{{ language.language.capitalize() }}</span>
+                                <span
+                                    class="language-level-text"
+                                    data-editable="true"
+                                    data-field="languages.{{ loop.index0 }}.level"
+                                    data-parent="languages"
+                                    contenteditable="true"
+                                >({{ language.level.capitalize() }})</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Software Skills Section -->
+                    {% if cv_data.softwares %}
+                    <div class="software-section">
+                        <h2><span class="section-icon icon-software"></span>{{ _('Logiciels') }}</h2>
+                        {% for software in cv_data.softwares %}
+                        <div class="software-item">
+                            <div class="software-header">
+                                <span
+                                    data-editable="true"
+                                    data-field="softwares.{{ loop.index0 }}.name"
+                                    data-parent="softwares"
+                                    contenteditable="true"
+                                >{{ software.name.capitalize() }}</span>
+                                <span
+                                    class="software-level-text"
+                                    data-editable="true"
+                                    data-field="softwares.{{ loop.index0 }}.proficiency"
+                                    data-parent="softwares"
+                                    contenteditable="true"
+                                >({{ software.proficiency.capitalize() }})</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Certifications Section -->
+                    {% if cv_data.certifications %}
+                    <div class="certifications-section">
+                        <h2><span class="section-icon icon-certs"></span>{{ _('Certifications') }}</h2>
+                        <div class="cert-list">
+                            {% for cert in cv_data.certifications %}
+                            <div class="cert-item">
+                                <h3
+                                    class="cert-name"
+                                    data-editable="true"
+                                    data-field="certifications.{{ loop.index0 }}.name"
+                                    data-parent="certifications"
+                                    contenteditable="true"
+                                >{{ cert.name }}</h3>
+                                <div
+                                    class="cert-issuer"
+                                    data-editable="true"
+                                    data-field="certifications.{{ loop.index0 }}.issuer"
+                                    data-parent="certifications"
+                                    contenteditable="true"
+                                >{{ cert.issuer }}</div>
+                                <span
+                                    class="cert-date"
+                                    data-editable="true"
+                                    data-field="certifications.{{ loop.index0 }}.date"
+                                    data-parent="certifications"
+                                    contenteditable="true"
+                                >{{ cert.date | datetime }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Hobbies Section -->
+                    {% if cv_data.hobbys %}
+                    <div class="hobbies-section">
+                        <h2><span class="section-icon icon-hobbies"></span>{{ _('Loisirs') }}</h2>
+                        <div class="hobbies-list">
+                            {% for hobby in cv_data.hobbys %}
+                            <div class="hobby-item">
+                                <span
+                                    data-editable="true"
+                                    data-field="hobbys.{{ loop.index0 }}.name"
+                                    data-parent="hobbys"
+                                    contenteditable="true"
+                                >{{ hobby.name.capitalize() }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- References Section -->
+                    {% if cv_data.references %}
+                    <div class="references-section">
+                        <h2><span class="section-icon icon-reference"></span>{{ _('Références') }}</h2>
+                        {% for ref in cv_data.references %}
+                        <div class="reference-item">
+                            <div class="reference-header">
+                                <h3
+                                    class="reference-name"
+                                    data-editable="true"
+                                    data-field="references.{{ loop.index0 }}.name"
+                                    data-parent="references"
+                                    contenteditable="true"
+                                >{{ ref.name }}</h3>
+                                <span
+                                    class="reference-company"
+                                    data-editable="true"
+                                    data-field="references.{{ loop.index0 }}.company"
+                                    data-parent="references"
+                                    contenteditable="true"
+                                >{{ ref.company }}</span>
+                            </div>
+                            <div class="reference-contact">
+                                <span
+                                    class="contact-details"
+                                    data-editable="true"
+                                    data-field="references.{{ loop.index0 }}.contact"
+                                    data-parent="references"
+                                    contenteditable="true"
+                                >{{ ref.contact }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="cv-main">
+                <!-- Professional Summary -->
+                {% if cv_data.personal_info.professional_summary %}
+                <div class="summary-section">
+                    <h2>{{ _('Résumé Professionnel') }}</h2>
+                    <p
+                        data-editable="true"
+                        data-field="personal_info.professional_summary"
+                        data-parent="personal_info"
+                        contenteditable="true"
+                    >{{ cv_data.personal_info.professional_summary }}</p>
+                </div>
+                {% endif %}
+
+                <!-- Professional Experience -->
+                {% if cv_data.experience %}
+                <div class="experience-section">
+                    <h2>{{ _('Expérience Professionnelle') }}</h2>
+                    {% for exp in cv_data.experience %}
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3
+                                class="position"
+                                data-editable="true"
+                                data-field="experience.{{ loop.index0 }}.position"
+                                data-parent="experience"
+                                contenteditable="true"
+                            >{{ exp.position }}</h3>
+                            <div class="date-range">
+                                <i class="icon-calendar"></i>
+                                <span
+                                    data-editable="true"
+                                    data-field="experience.{{ loop.index0 }}.start_date"
+                                    data-parent="experience"
+                                    contenteditable="true"
+                                >
+                                    {{ exp.start_date | datetime }} -
+                                    {% if exp.current == '1' %}
+                                        {{ _('Présent') }}
+                                    {% else %}
+                                        <span
+                                            data-editable="true"
+                                            data-field="experience.{{ loop.index0 }}.end_date"
+                                            data-parent="experience"
+                                            contenteditable="true"
+                                        >{{ exp.end_date | datetime }}</span>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="company-info">
+                            <span
+                                class="company-name"
+                                data-editable="true"
+                                data-field="experience.{{ loop.index0 }}.company"
+                                data-parent="experience"
+                                contenteditable="true"
+                            >{{ exp.company }}</span>
+                            <div class="location">
+                                <i class="icon-location"></i>
+                                <span
+                                    data-editable="true"
+                                    data-field="experience.{{ loop.index0 }}.location"
+                                    data-parent="experience"
+                                    contenteditable="true"
+                                >{{ exp.location }}</span>
+                            </div>
+                        </div>
+                        <p
+                            class="experience-description"
+                            data-editable="true"
+                            data-field="experience.{{ loop.index0 }}.description_"
+                            data-parent="experience"
+                            contenteditable="true"
+                        >{{ exp.description_ }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Education -->
+                {% if cv_data.education %}
+                <div class="education-section">
+                    <h2>{{ _('Formation') }}</h2>
+                    {% for edu in cv_data.education %}
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h3
+                                class="degree"
+                                data-editable="true"
+                                data-field="education.{{ loop.index0 }}.degree"
+                                data-parent="education"
+                                contenteditable="true"
+                            >{{ edu.degree }}</h3>
+                            <div class="date-range">
+                                <i class="icon-calendar"></i>
+                                <span>
+                                    <span
+                                        data-editable="true"
+                                        data-field="education.{{ loop.index0 }}.start_date"
+                                        data-parent="education"
+                                        contenteditable ="true"
+                                >{{ edu.start_date | datetime }}</span> -
+                                    {% if edu.current == '1' %}
+                                        {{ _('Présent') }}
+                                    {% else %}
+                                        <span
+                                            data-editable="true"
+                                            data-field="education.{{ loop.index0 }}.end_date"
+                                            data-parent="education"
+                                            contenteditable="true"
+                                        >{{ edu.end_date | datetime }}</span>
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="institution-info">
+                            <span
+                                class="institution-name"
+                                data-editable="true"
+                                data-field="education.{{ loop.index0 }}.institution"
+                                data-parent="education"
+                                contenteditable="true"
+                            >{{ edu.institution }}</span>
+                            <span
+                                class="field-of-study"
+                                data-editable="true"
+                                data-field="education.{{ loop.index0 }}.field_of_study"
+                                data-parent="education"
+                                contenteditable="true"
+                            >{{ edu.field_of_study }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+                <div class="mobile-bottom-spacer"></div>
+        </div>
+    </div>
+
+<script src="{{ url_for('main.js_translations') }}"></script>
+<script src="{{ url_for('static', filename='js/cv-edit.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/navigation-warning.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/cv-save.js') }}"></script>
+<script src="{{ url_for('static', filename='js/cv-export.js') }}"></script>
+<script src="{{ url_for('static', filename='js/cv-customizer.js')}}"></script>
+{% endblock %}

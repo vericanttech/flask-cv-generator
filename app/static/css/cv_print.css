@@ -1,0 +1,58 @@
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .cv-container {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .actions-container {
+        display: none !important;
+    }
+
+        header, nav, footer {
+        display: none !important;
+    }
+}
+
+    .cv-content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .cv-sidebar, .cv-main {
+        height: 100%;
+    }
+
+    /* Prevent unwanted page breaks */
+    .experience-item,
+    .education-item,
+    .reference-item {
+        page-break-inside: avoid;
+    }
+
+    /* Ensure proper rendering of background colors */
+    .cv-sidebar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Ensure proper image rendering */
+    .profile-photo img {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}

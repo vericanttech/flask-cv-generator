@@ -1,0 +1,777 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-03-25 18:10+0300\n"
+"PO-Revision-Date: 2025-03-09 23:51+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/cv_generator.py:636
+#, python-brace-format
+msgid "Émis par : {issuer}"
+msgstr "Issued by: {issuer}"
+
+#: app/forms.py:15 app/templates/_partials/language_form.html:31
+#: app/templates/cv_form.html:432
+msgid "Débutant"
+msgstr "Beginner"
+
+#: app/forms.py:16 app/templates/_partials/language_form.html:32
+#: app/templates/cv_form.html:433
+msgid "Intermédiaire"
+msgstr "Intermediate"
+
+#: app/forms.py:17 app/templates/_partials/language_form.html:33
+#: app/templates/cv_form.html:434
+msgid "Avancé"
+msgstr "Advanced"
+
+#: app/routes.py:92
+msgid "Limite d'utilisations gratuites atteinte. Veuillez procéder au paiement."
+msgstr "Free usage limit reached. Please proceed to payment."
+
+#: app/routes.py:104
+msgid "activé"
+msgstr "enabled"
+
+#: app/routes.py:104
+msgid "désactivé"
+msgstr "disabled"
+
+#: app/routes.py:105
+#, python-format
+msgid "Mode test %(mode)s"
+msgstr "Tester mode %(mode)s"
+
+#: app/routes.py:107
+msgid "Le mode test n est pas disponible"
+msgstr "Test mode is not available"
+
+#: app/routes.py:153
+msgid "APERÇU SEULEMENT"
+msgstr "PREVIEW ONLY"
+
+#: app/routes.py:154
+msgid "PAIEMENT REQUIS"
+msgstr "PAYMENT REQUIRED"
+
+#: app/routes.py:214
+msgid "Télécharger le CV en PDF"
+msgstr "Download as PDF"
+
+#: app/templates/base.html:6
+msgid "Générateur de CV"
+msgstr " Generate CV  "
+
+#: app/templates/base.html:66 app/templates/base.html:140
+msgid "CV Generator"
+msgstr "CV Generator"
+
+#: app/templates/base.html:84
+msgid "Créer un CV"
+msgstr "Create a CV"
+
+#: app/templates/base.html:115
+msgid "Mode Bêta Actif"
+msgstr "Testing Mode activated"
+
+#: app/templates/base.html:116
+msgid ""
+"Ce site est actuellement en mode test et les fonctionnalités sont "
+"gratuites."
+msgstr "This site is currently in test mode and its features are free."
+
+#: app/templates/base.html:140
+msgid "Tous droits réservés."
+msgstr "All rights reserved."
+
+#: app/templates/choose_template.html:3
+msgid "Choisir un modèle"
+msgstr "Choose Template"
+
+#: app/templates/choose_template.html:39
+msgid "Choisissez un modèle de CV"
+msgstr "Choose a CV Template"
+
+#: app/templates/choose_template.html:47 app/templates/choose_template.html:60
+#: app/templates/choose_template.html:73
+msgid "Sélectionner"
+msgstr "Select"
+
+#: app/templates/choose_template.html:51
+msgid "Minimaliste"
+msgstr "Minimal"
+
+#: app/templates/choose_template.html:64
+msgid "Professional"
+msgstr "Professional"
+
+#: app/templates/choose_template.html:77
+msgid "Créatif"
+msgstr "Creative"
+
+#: app/templates/cv_form.html:2
+msgid "Créer votre CV"
+msgstr "Start your resume"
+
+#: app/templates/cv_form.html:55
+msgid "Profil"
+msgstr "Profile"
+
+#: app/templates/cv_form.html:61 app/templates/cv_form.html:229
+#: app/templates/cv_preview.html:383
+msgid "Formation"
+msgstr "Education"
+
+#: app/templates/cv_form.html:67
+msgid "Expérience"
+msgstr "Experience"
+
+#: app/templates/cv_form.html:73 app/templates/cv_preview.html:140
+msgid "Compétences"
+msgstr "Skills"
+
+#: app/templates/cv_form.html:79
+msgid "Autre"
+msgstr "Other"
+
+#: app/templates/cv_form.html:95
+msgid "Informations Personnelles"
+msgstr "Personal Information"
+
+#: app/templates/cv_form.html:98
+msgid "Photo"
+msgstr "Photo"
+
+#: app/templates/cv_form.html:102
+msgid "Choisir un fichier"
+msgstr "Choose a file"
+
+#: app/templates/cv_form.html:104
+msgid "Aucun fichier sélectionné"
+msgstr "No file selected"
+
+#: app/templates/cv_form.html:108
+msgid "Aperçu"
+msgstr "Preview"
+
+#: app/templates/cv_form.html:123
+msgid "Prénom"
+msgstr "First Name"
+
+#: app/templates/_partials/reference_form.html:12
+#: app/templates/cv_form.html:137
+msgid "Nom"
+msgstr "Last Name"
+
+#: app/templates/cv_form.html:153 app/templates/cv_preview.html:92
+msgid "Email"
+msgstr "Email"
+
+#: app/templates/cv_form.html:164 app/templates/cv_preview.html:103
+msgid "Téléphone"
+msgstr "Phone"
+
+#: app/templates/cv_form.html:177 app/templates/cv_preview.html:114
+msgid "Adresse"
+msgstr "Address"
+
+#: app/templates/cv_form.html:189 app/templates/cv_preview.html:125
+msgid "Ville"
+msgstr "City"
+
+#: app/templates/cv_form.html:201
+msgid "Résumé professionnel"
+msgstr "Professional Summary"
+
+#: app/templates/cv_form.html:214
+msgid "Générer un résumé IA"
+msgstr "Generate an AI summary"
+
+#: app/templates/cv_form.html:222 app/templates/cv_form.html:283
+#: app/templates/cv_form.html:368 app/templates/cv_form.html:453
+msgid "Suivant"
+msgstr "Next"
+
+#: app/templates/_partials/education_form.html:13
+#: app/templates/cv_form.html:236
+msgid "Institution"
+msgstr "Institution"
+
+#: app/templates/_partials/education_form.html:25
+#: app/templates/cv_form.html:247
+msgid "Diplôme"
+msgstr "Degree"
+
+#: app/templates/_partials/education_form.html:38
+#: app/templates/_partials/experience_form.html:42
+#: app/templates/cv_form.html:261 app/templates/cv_form.html:322
+msgid "Date de début"
+msgstr "Start Date"
+
+#: app/templates/_partials/education_form.html:43
+#: app/templates/_partials/experience_form.html:48
+#: app/templates/cv_form.html:265 app/templates/cv_form.html:327
+msgid "Date de fin"
+msgstr "End Date"
+
+#: app/templates/cv_form.html:274
+msgid "+ Ajouter une formation"
+msgstr "+ Add Education"
+
+#: app/templates/cv_form.html:280 app/templates/cv_form.html:365
+#: app/templates/cv_form.html:450
+msgid "Précédent"
+msgstr "Previous"
+
+#: app/templates/cv_form.html:291 app/templates/cv_preview.html:317
+msgid "Expérience Professionnelle"
+msgstr "Professional Experience"
+
+#: app/templates/_partials/experience_form.html:15
+#: app/templates/_partials/reference_form.html:24
+#: app/templates/cv_form.html:297
+msgid "Entreprise"
+msgstr "Company"
+
+#: app/templates/_partials/experience_form.html:27
+#: app/templates/cv_form.html:308
+msgid "Poste"
+msgstr "Position"
+
+#: app/templates/_partials/experience_form.html:51
+#: app/templates/cv_form.html:330 app/templates/cv_preview.html:338
+#: app/templates/cv_preview.html:404
+msgid "Présent"
+msgstr "Present"
+
+#: app/templates/_partials/experience_form.html:57
+#: app/templates/cv_form.html:335
+msgid "Poste actuel"
+msgstr "Current Position"
+
+#: app/templates/_partials/experience_form.html:63
+#: app/templates/cv_form.html:340 app/templates/payment.html:28
+msgid "Description"
+msgstr "Description"
+
+#: app/templates/cv_form.html:350
+msgid " Générer une description IA"
+msgstr "Generate an AI description"
+
+#: app/templates/cv_form.html:359
+msgid " + Ajouter une expérience "
+msgstr " + Add Experience "
+
+#: app/templates/cv_form.html:378
+msgid "Compétences et Langues"
+msgstr "Skills and Languages"
+
+#: app/templates/_partials/skill_form.html:11 app/templates/cv_form.html:384
+msgid "Compétence"
+msgstr "Skill"
+
+#: app/templates/_partials/skill_form.html:15 app/templates/cv_form.html:388
+msgid "Communication"
+msgstr "Communication"
+
+#: app/templates/_partials/skill_form.html:16 app/templates/cv_form.html:389
+msgid "Gestion du temps"
+msgstr "Time Management"
+
+#: app/templates/_partials/skill_form.html:17 app/templates/cv_form.html:390
+msgid "Travail d'équipe"
+msgstr "Teamwork"
+
+#: app/templates/_partials/skill_form.html:18 app/templates/cv_form.html:391
+msgid "Leadership"
+msgstr "Leadership"
+
+#: app/templates/_partials/skill_form.html:19 app/templates/cv_form.html:392
+msgid "Résolution de problèmes"
+msgstr "Problem Solving"
+
+#: app/templates/_partials/skill_form.html:20 app/templates/cv_form.html:393
+msgid "Adaptabilité"
+msgstr "Adaptability"
+
+#: app/templates/_partials/skill_form.html:21 app/templates/cv_form.html:394
+msgid "Créativité"
+msgstr "Creativity"
+
+#: app/templates/_partials/skill_form.html:22 app/templates/cv_form.html:395
+msgid "Pensée critique"
+msgstr "Critical Thinking"
+
+#: app/templates/cv_form.html:404
+msgid "+ Ajouter une compétence"
+msgstr "+ Add Skill"
+
+#: app/templates/_partials/language_form.html:11 app/templates/cv_form.html:412
+msgid "Langue"
+msgstr "Language"
+
+#: app/templates/_partials/language_form.html:15 app/templates/cv_form.html:416
+msgid "Français"
+msgstr "French"
+
+#: app/templates/_partials/language_form.html:16 app/templates/cv_form.html:417
+msgid "Anglais"
+msgstr "English"
+
+#: app/templates/_partials/language_form.html:17 app/templates/cv_form.html:418
+msgid "Arabe"
+msgstr "Arabic"
+
+#: app/templates/_partials/language_form.html:18 app/templates/cv_form.html:419
+msgid "Turc"
+msgstr "Turkish"
+
+#: app/templates/_partials/language_form.html:19 app/templates/cv_form.html:420
+msgid "Espagnol"
+msgstr "Spanish"
+
+#: app/templates/_partials/language_form.html:20 app/templates/cv_form.html:421
+msgid "Allemand"
+msgstr "German"
+
+#: app/templates/_partials/language_form.html:21 app/templates/cv_form.html:422
+msgid "Italien"
+msgstr "Italian"
+
+#: app/templates/_partials/language_form.html:22 app/templates/cv_form.html:423
+msgid "Chinois"
+msgstr "Chinese"
+
+#: app/templates/_partials/language_form.html:27 app/templates/cv_form.html:428
+msgid "Niveau"
+msgstr "Level"
+
+#: app/templates/_partials/language_form.html:34 app/templates/cv_form.html:435
+msgid "Natif"
+msgstr "Native"
+
+#: app/templates/cv_form.html:443
+msgid "+ Ajouter une langue"
+msgstr "+ Add Language"
+
+#: app/templates/cv_form.html:461
+msgid "Informations Additionnelles"
+msgstr "Additional Information"
+
+#: app/templates/cv_form.html:465 app/templates/cv_preview.html:211
+msgid "Certifications"
+msgstr "Certifications"
+
+#: app/templates/cv_form.html:470
+msgid "+ Ajouter une certification"
+msgstr "+ Add Certification"
+
+#: app/templates/cv_form.html:476
+msgid "Centres d'intérêt"
+msgstr "Interests"
+
+#: app/templates/cv_form.html:481
+msgid "++ Ajouter un centre d'intérêt"
+msgstr "++ Add Interest"
+
+#: app/templates/cv_form.html:487
+msgid "Compétences Logicielles"
+msgstr "Software Skills"
+
+#: app/templates/cv_form.html:492
+msgid "+ Ajouter un logiciel"
+msgstr "+ Add Software"
+
+#: app/templates/cv_form.html:498 app/templates/cv_preview.html:264
+msgid "Références"
+msgstr "References"
+
+#: app/templates/cv_form.html:503
+msgid "+ Ajouter une référence "
+msgstr "+ Add Reference "
+
+#: app/templates/cv_form.html:510
+msgid " Précédent  "
+msgstr " Previous  "
+
+#: app/templates/cv_form.html:513
+msgid " Générer le CV  "
+msgstr " Generate CV  "
+
+#: app/templates/cv_form.html:523
+msgid "Personnalisation du résumé professionnel"
+msgstr "Customization of Professional Summary"
+
+#: app/templates/cv_form.html:524
+msgid ""
+"Pour mieux personnaliser votre résumé, veuillez nous en dire plus sur "
+"vous :"
+msgstr "To better customize your summary, please tell us more about yourself:"
+
+#: app/templates/cv_form.html:528
+msgid "- Votre domaine d'expertise"
+msgstr "- Your area of expertise"
+
+#: app/templates/cv_form.html:529
+msgid "- Vos années d'expérience"
+msgstr "- Your years of experience"
+
+#: app/templates/cv_form.html:530
+msgid "- Vos principales réalisations"
+msgstr "- Your main achievements"
+
+#: app/templates/cv_form.html:538 app/templates/cv_preview.html:53
+msgid "Annuler"
+msgstr "Cancel"
+
+#: app/templates/cv_form.html:541
+msgid "Générer"
+msgstr "Generate"
+
+#: app/templates/cv_preview.html:3
+msgid "Prévisualisation du CV"
+msgstr "Preview your resume"
+
+#: app/templates/cv_preview.html:33
+msgid "Télécharger PDF"
+msgstr "Download as PDF"
+
+#: app/templates/cv_preview.html:34
+msgid "Adapter au poste"
+msgstr "Tailor to the job"
+
+#: app/templates/cv_preview.html:39
+msgid "Personnaliser le CV pour un emploi spécifique"
+msgstr "Customize CV for a specific job"
+
+#: app/templates/cv_preview.html:40
+msgid ""
+"Collez la description du poste ci-dessous pour optimiser votre CV en "
+"fonction de celui-ci."
+msgstr "Paste the job description below to optimize your CV for it."
+
+#: app/templates/cv_preview.html:43
+msgid "Description du poste"
+msgstr "Job description"
+
+#: app/templates/cv_preview.html:48
+msgid "Objectifs de carrière"
+msgstr "Career Objectives"
+
+#: app/templates/cv_preview.html:48
+msgid "optionnel"
+msgstr "optional"
+
+#: app/templates/cv_preview.html:54
+msgid "Personnaliser mon CV"
+msgstr "Customize my CV for the job"
+
+#: app/templates/cv_preview.html:61
+msgid "Personnalisation de votre CV en cours..."
+msgstr "Customizing your CV..."
+
+#: app/templates/_partials/reference_form.html:36
+#: app/templates/cv_preview.html:88
+msgid "Contact"
+msgstr "Contact"
+
+#: app/templates/cv_preview.html:159
+msgid "Langues"
+msgstr "Languages"
+
+#: app/templates/cv_preview.html:185
+msgid "Logiciels"
+msgstr "Software Name"
+
+#: app/templates/cv_preview.html:245
+msgid "Loisirs"
+msgstr "Hobbies"
+
+#: app/templates/cv_preview.html:304
+msgid "Résumé Professionnel"
+msgstr "Professional Summary"
+
+#: app/templates/index.html:3
+msgid "CV Generator - Accueil"
+msgstr "CV Generator - Home"
+
+#: app/templates/index.html:8
+msgid "Créez votre CV professionnel"
+msgstr "Create your professional resume"
+
+#: app/templates/index.html:11
+msgid "Un outil simple et efficace pour créer un CV qui se démarque"
+msgstr "A simple and efficient tool to create a resume that stands out"
+
+#: app/templates/index.html:17
+msgid "Simple à utiliser"
+msgstr "Easy to use"
+
+#: app/templates/index.html:18
+msgid "Remplissez simplement le formulaire avec vos informations professionnelles"
+msgstr "Simply fill out the form with your professional information"
+
+#: app/templates/index.html:23
+msgid "Compatible Mobile"
+msgstr "Mobile friendly"
+
+#: app/templates/index.html:24
+msgid "Créez votre CV depuis n'importe quel appareil"
+msgstr "Create your resume from any device"
+
+#: app/templates/index.html:29
+msgid "Professionnel"
+msgstr "Professional"
+
+#: app/templates/index.html:30
+msgid "Des modèles adaptés au marché du travail sénégalais"
+msgstr "Templates tailored to the Senegalese job market"
+
+#: app/templates/index.html:36
+msgid "Commencer votre CV"
+msgstr "Start your resume"
+
+#: app/templates/index.html:43
+msgid "Comment ça marche ?"
+msgstr "How does it work?"
+
+#: app/templates/index.html:49
+msgid "Remplissez le formulaire"
+msgstr "Fill out the form"
+
+#: app/templates/index.html:53
+msgid "Ajoutez votre photo"
+msgstr "Add your photo"
+
+#: app/templates/index.html:57
+msgid "Prévisualisez votre CV"
+msgstr "Preview your resume"
+
+#: app/templates/index.html:61
+msgid "Téléchargez en PDF"
+msgstr "Download as PDF"
+
+#: app/templates/payment.html:10
+msgid "Paiement pour télécharger votre CV"
+msgstr "Payment to Download Your CV"
+
+#: app/templates/payment.html:14
+msgid "Aperçu de votre CV"
+msgstr "Preview your resume"
+
+#: app/templates/payment.html:20
+msgid "Détails du paiement"
+msgstr "Payment Details"
+
+#: app/templates/payment.html:24
+msgid "Montant"
+msgstr "Amount"
+
+#: app/templates/payment.html:35 app/templates/payment.html:89
+msgid "Payer avec Wave"
+msgstr "Pay with Wave"
+
+#: app/templates/payment.html:62
+msgid "Initialisation du paiement"
+msgstr "Payment Initialization"
+
+#: app/templates/payment.html:86
+msgid "Erreur - Réessayez"
+msgstr "Error - Try Again"
+
+#: app/templates/_partials/certification_form.html:12
+msgid "Nom de la Certification"
+msgstr "Certification Name"
+
+#: app/templates/_partials/certification_form.html:24
+msgid "Émetteur"
+msgstr "Issuer"
+
+#: app/templates/_partials/certification_form.html:36
+msgid "Date"
+msgstr "Date"
+
+#: app/templates/_partials/experience_form.html:73
+msgid "Générer une description IA"
+msgstr "Generate an AI description"
+
+#: app/templates/_partials/hobby_form.html:12
+msgid "Nom du loisir"
+msgstr "Hobby Name"
+
+#: app/templates/_partials/hobby_form.html:16
+msgid "Lecture"
+msgstr "Reading"
+
+#: app/templates/_partials/hobby_form.html:17
+msgid "Sport"
+msgstr "Sports"
+
+#: app/templates/_partials/hobby_form.html:18
+msgid "Voyage"
+msgstr "Travel"
+
+#: app/templates/_partials/hobby_form.html:19
+msgid "Musique"
+msgstr "Music"
+
+#: app/templates/_partials/hobby_form.html:20
+msgid "Cinéma"
+msgstr "Cinema"
+
+#: app/templates/_partials/hobby_form.html:21
+msgid "Cuisine"
+msgstr "Cooking"
+
+#: app/templates/_partials/hobby_form.html:22
+msgid "Dessin"
+msgstr "Drawing"
+
+#: app/templates/_partials/hobby_form.html:23
+msgid "Photographie"
+msgstr "Photography"
+
+#: app/templates/_partials/software_form.html:12
+msgid "Nom du logiciel"
+msgstr "Software Name"
+
+#: app/templates/_partials/software_form.html:24
+msgid "Niveau de compétence"
+msgstr "Skill Level"
+
+#~ msgid "Choisir un fichier"
+#~ msgstr "Choose File"
+
+#~ msgid "Aucun fichier sélectionné"
+#~ msgstr "No file chosen"
+
+#~ msgid "Aperçu"
+#~ msgstr "Preview"
+
+#~ msgid "Mode édition : Activé/Désactivé"
+#~ msgstr "Edit Mode: On/Off"
+
+#~ msgid "Enregistrer les modifications"
+#~ msgstr "Save Changes"
+
+#~ msgid "Modifications enregistrées avec succès !"
+#~ msgstr "Changes saved successfully!"
+
+#~ msgid "Erreur lors de l enregistrement des modifications :"
+#~ msgstr "Error saving changes:"
+
+#~ msgid "Erreur inconnue"
+#~ msgstr "Unknown error"
+
+#~ msgid "Erreur - Réessayez"
+#~ msgstr "Error - Try Again"
+
+#~ msgid ""
+#~ "- Votre domaine d'expertise\n"
+#~ "- Vos années d'expérience\n"
+#~ "- Vos principales réalisations"
+#~ msgstr ""
+#~ "- Your area of expertise\n"
+#~ "- Your years of experience\n"
+#~ "- Your main achievements"
+
+#~ msgid "Paiement requis avant de télécharger le PDF"
+#~ msgstr "Payment required before downloading PDF"
+
+#~ msgid "Quitter le mode édition"
+#~ msgstr "Exit edit mode"
+
+#~ msgid "Modifier le CV"
+#~ msgstr "Edit CV"
+
+#~ msgid "Modifications enregistrées avec succès!"
+#~ msgstr "Changes saved successfully!"
+
+#~ msgid "Erreur lors de l enregistrement des modifications:"
+#~ msgstr "Error saving changes:"
+
+#~ msgid "Génération du CV"
+#~ msgstr "Generating CV"
+
+#~ msgid "Générer le contenu"
+#~ msgstr "Generate Content"
+
+#~ msgid "Génération en cours..."
+#~ msgstr "processing...."
+
+#~ msgid "janvier"
+#~ msgstr "January"
+
+#~ msgid "février"
+#~ msgstr "February"
+
+#~ msgid "mars"
+#~ msgstr "March"
+
+#~ msgid "avril"
+#~ msgstr "April"
+
+#~ msgid "mai"
+#~ msgstr "May"
+
+#~ msgid "juin"
+#~ msgstr "June"
+
+#~ msgid "juillet"
+#~ msgstr "July"
+
+#~ msgid "août"
+#~ msgstr "August"
+
+#~ msgid "septembre"
+#~ msgstr "September"
+
+#~ msgid "octobre"
+#~ msgstr "October"
+
+#~ msgid "novembre"
+#~ msgstr "November"
+
+#~ msgid "décembre"
+#~ msgstr "December"
+
+#~ msgid "Di"
+#~ msgstr "Sun"
+
+#~ msgid "Lu"
+#~ msgstr "Mon"
+
+#~ msgid "Ma"
+#~ msgstr "Tue"
+
+#~ msgid "Me"
+#~ msgstr "Wed"
+
+#~ msgid "Je"
+#~ msgstr "Thu"
+
+#~ msgid "Ve"
+#~ msgstr "Fri"
+
+#~ msgid "Sa"
+#~ msgstr "Sat"
+
+#~ msgid "Sélectionner une date"
+#~ msgstr "Select a date"
+
+#~ msgid "Activer le mode test"
+#~ msgstr "Enable edit mode"
+

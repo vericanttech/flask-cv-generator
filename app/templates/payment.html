@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<div class="payment-container">
+    <h1>{{ _('Paiement pour télécharger votre CV') }}</h1>
+
+    <div class="payment-card">
+        <div class="pdf-preview">
+            <img src="{{ url_for('main.preview_pdf_thumbnail') }}" alt="{{ _('Aperçu de votre CV') }}" width="100%" style="height: auto;">
+        </div>
+    </div>
+
+    <div class="payment-card">
+        <div class="card-header">
+            <h3>{{ _('Détails du paiement') }}</h3>
+        </div>
+        <div class="payment-info">
+            <div class="payment-detail">
+                <span class="detail-label">{{ _('Montant') }}:</span>
+                <span class="detail-value">{{ payment_data.amount}} {{ payment_data.currency }}</span>
+            </div>
+            <div class="payment-detail">
+                <span class="detail-label">{{ _('Description') }}:</span>
+                <span class="detail-value">{{ payment_data.description }}</span>
+            </div>
+        </div>
+
+        <div class="payment-actions">
+            <button id="payWithWave" class="btn-primary">
+                <span>{{ _('Payer avec Wave') }}</span>
+                <img src="{{ url_for('static', filename='images/wave-logo.png') }}" alt="Wave" class="payment-icon">
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const payButton = document.getElementById('payWithWave');
+
+    payButton.addEventListener('click', async function() {
+        // Update button state
+        function updateButtonState(isLoading, text) {
+            payButton.textContent = text;
+            payButton.disabled = isLoading;
+            payButton.style.opacity = isLoading ? '0.8' : '1';
+
+            if (isLoading) {
+                const spinner = document.createElement('div');
+                spinner.className = 'spinner';
+                payButton.appendChild(spinner);
+            }
+        }
+
+        try {
+            updateButtonState(true, '{{ _('Initialisation du paiement') }} ');
+
+            // Call the backend to initiate payment
+            const response = await fetch('{{ url_for("main.initiate_payment") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to initiate payment');
+            }
+
+            const data = await response.json();
+
+            if (data.success && data.payment_url) {
+                // Redirect to the Wave payment page
+                window.location.href = data.payment_url;
+            } else {
+                throw new Error('Invalid payment response');
+            }
+        } catch (error) {
+            console.error('Payment initiation failed:', error);
+            updateButtonState(false, '{{ _('Erreur - Réessayez') }}');
+
+            setTimeout(() => {
+                updateButtonState(false, '{{ _('Payer avec Wave') }}');
+            }, 3000);
+        }
+    });
+});
+</script>
+{% endblock %}

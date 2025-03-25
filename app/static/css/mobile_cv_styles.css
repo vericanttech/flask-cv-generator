@@ -1,0 +1,194 @@
+@media screen and (max-width: 768px) {
+    /* Base mobile styles */
+    .cv-container {
+        width: 100% !important;
+        min-height: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+
+    }
+
+    .cv-content {
+        flex-direction: column !important;
+    }
+
+    .cv-sidebar {
+        width: 100% !important;
+        padding: 1rem !important;
+        position: relative !important;
+        z-index: 3 !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .sidebar-content {
+        position: relative !important;
+        z-index: 4 !important;
+    }
+    .cv-main {
+        width: 100% !important;
+        padding: 1rem !important;
+    }
+
+    /* Profile Photo Fixes */
+    .profile-photo {
+        width: 120px !important;
+        height: 120px !important;
+        margin: 1rem auto !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+        position: relative !important;
+        z-index: 5 !important;
+        background-color: #f0f0f0 !important;
+        border: 2px solid #fff !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+
+    .profile-photo img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+        position: relative !important;
+        z-index: 6 !important;
+        transform: translateZ(0) !important; /* Force GPU acceleration */
+        backface-visibility: hidden !important;
+        -webkit-backface-visibility: hidden !important;
+    }
+
+    /* Profile section */
+    .profile-section {
+        text-align: center !important;
+        padding: 1rem 0 !important;
+    }
+
+    .profile-section h1 {
+        font-size: 1.5rem !important;
+        margin: 0.5rem 0 !important;
+    }
+
+    /* Actions container */
+    .actions-container {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 1rem !important;
+        background: white !important;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
+        z-index: 100 !important;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 1rem !important;
+    }
+
+    /* Main content sections */
+    .experience-header,
+    .education-header {
+        flex-direction: column !important;
+    }
+
+    /* Add padding at bottom for fixed buttons */
+    body {
+        padding-bottom: 70px !important;
+    }
+
+    /* Make buttons more touch-friendly */
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 20px !important;
+        font-size: 16px !important;
+        min-width: 120px !important;
+        flex: 1 !important;
+    }
+
+    /* Contact Info Styling */
+    .contact-info {
+        margin-top: 1rem !important;
+    }
+
+    .info-item {
+        padding: 0.5rem 0 !important;
+        border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+    }
+
+    .info-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .info-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.25rem !important;
+    }
+
+    .info-content label {
+        font-size: 0.9rem !important;
+        color: var(--secondary-color) !important;
+    }
+
+    .info-content span {
+        font-size: 1rem !important;
+    }
+    .actions-container--mobile {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 0.5rem !important;
+        gap: 0.5rem !important; /* Reducing the gap between buttons */
+    }
+
+    .actions-container--mobile button,
+    .actions-container--mobile form {
+        width: 100% !important;
+        margin: 0 !important; /* Remove any margin that might be causing extra space */
+    }
+
+    /* Reduce container size */
+    .actions-container {
+        padding: 0.5rem !important;
+    }
+
+    /* Add padding at bottom for fixed buttons - reduce this too */
+    body {
+        padding-bottom: 60px !important; /* Reduced from 70px */
+    }
+
+    .job-description-container .actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+
+    .job-description-container .actions button {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+        .mobile-bottom-spacer {
+        height: 20px !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+
+.adapt-btn {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    background-color: #ffd700; /* Corrected to 'yellow' */
+    color: black; /* Adjusted for better contrast with yellow */
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(255, 255, 0, 0.4); /* Adjusted shadow for yellow */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    min-width: 7.5rem;
+}
+
+
+
+
+}

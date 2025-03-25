@@ -1,0 +1,26 @@
+<div class="field-entry skill-entry mb-4 relative border p-4 rounded">
+    <button type="button"
+            class="delete-field absolute top-2 right-2 text-red-600 hover:text-red-800"
+            data-field-type="skill"
+            data-field-id="{{ form.skill.id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    <div class="mb-4">
+        {{ form.skill.label(class="block text-gray-700 font-bold mb-2", text=_("Compétence")) }}
+        <div class="relative">
+            {{ form.skill(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline skill-input") }}
+            <div class="skill-dropdown absolute hidden bg-white border rounded w-full mt-1 shadow-md z-10">
+                <button type="button" data-skill="{{ _('Communication') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Communication') }}</button>
+                <button type="button" data-skill="{{ _('Gestion du temps') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Gestion du temps') }}</button>
+                <button type="button" data-skill="{{ _('Travail d\'équipe') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Travail d\'équipe') }}</button>
+                <button type="button" data-skill="{{ _('Leadership') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Leadership') }}</button>
+                <button type="button" data-skill="{{ _('Résolution de problèmes') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Résolution de problèmes') }}</button>
+                <button type="button" data-skill="{{ _('Adaptabilité') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Adaptabilité') }}</button>
+                <button type="button" data-skill="{{ _('Créativité') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Créativité') }}</button>
+                <button type="button" data-skill="{{ _('Pensée critique') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Pensée critique') }}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,783 @@
+# Turkish translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-03-25 18:10+0300\n"
+"PO-Revision-Date: 2025-03-09 23:52+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: tr\n"
+"Language-Team: tr <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/cv_generator.py:636
+#, python-brace-format
+msgid "Émis par : {issuer}"
+msgstr "veren kurum: {issuer}"
+
+#: app/forms.py:15 app/templates/_partials/language_form.html:31
+#: app/templates/cv_form.html:432
+msgid "Débutant"
+msgstr "Başlangıç"
+
+#: app/forms.py:16 app/templates/_partials/language_form.html:32
+#: app/templates/cv_form.html:433
+msgid "Intermédiaire"
+msgstr "Orta"
+
+#: app/forms.py:17 app/templates/_partials/language_form.html:33
+#: app/templates/cv_form.html:434
+msgid "Avancé"
+msgstr "İleri"
+
+#: app/routes.py:92
+msgid "Limite d'utilisations gratuites atteinte. Veuillez procéder au paiement."
+msgstr "Ücretsiz kullanım limitine ulaşıldı. Lütfen ödeme işlemine geçiniz."
+
+#: app/routes.py:104
+msgid "activé"
+msgstr "etkin"
+
+#: app/routes.py:104
+msgid "désactivé"
+msgstr "devre dışı"
+
+#: app/routes.py:105
+#, python-format
+msgid "Mode test %(mode)s"
+msgstr "Test modu %(mode)s"
+
+#: app/routes.py:107
+msgid "Le mode test n est pas disponible"
+msgstr "Test modu mevcut değil"
+
+#: app/routes.py:153
+msgid "APERÇU SEULEMENT"
+msgstr "SADECE ÖNİZLEME"
+
+#: app/routes.py:154
+msgid "PAIEMENT REQUIS"
+msgstr "ÖDEME GEREKLİ"
+
+#: app/routes.py:214
+msgid "Télécharger le CV en PDF"
+msgstr "PDF olarak indirin"
+
+#: app/templates/base.html:6
+msgid "Générateur de CV"
+msgstr " CV Oluştur  "
+
+#: app/templates/base.html:66 app/templates/base.html:140
+msgid "CV Generator"
+msgstr "CV Oluşturucu"
+
+#: app/templates/base.html:84
+msgid "Créer un CV"
+msgstr "CV Oluştur"
+
+#: app/templates/base.html:115
+msgid "Mode Bêta Actif"
+msgstr "Beta Modu Aktif"
+
+#: app/templates/base.html:116
+msgid ""
+"Ce site est actuellement en mode test et les fonctionnalités sont "
+"gratuites."
+msgstr "Bu site şu anda test modundadır ve tüm özellikler ücretsizdir "
+
+
+#: app/templates/base.html:140
+msgid "Tous droits réservés."
+msgstr "Tüm hakları saklıdır."
+
+#: app/templates/choose_template.html:3
+msgid "Choisir un modèle"
+msgstr "Şablon seçiniz"
+
+#: app/templates/choose_template.html:39
+msgid "Choisissez un modèle de CV"
+msgstr "bir CV Şablonu seçiniz"
+
+#: app/templates/choose_template.html:47 app/templates/choose_template.html:60
+#: app/templates/choose_template.html:73
+msgid "Sélectionner"
+msgstr "seç"
+
+#: app/templates/choose_template.html:51
+msgid "Minimaliste"
+msgstr "sade"
+
+#: app/templates/choose_template.html:64
+msgid "Professional"
+msgstr "profesyonel"
+
+#: app/templates/choose_template.html:77
+msgid "Créatif"
+msgstr "yaratıcı"
+
+#: app/templates/cv_form.html:2
+msgid "Créer votre CV"
+msgstr "CV'nizi oluşturun"
+
+#: app/templates/cv_form.html:55
+msgid "Profil"
+msgstr "Profil"
+
+#: app/templates/cv_form.html:61 app/templates/cv_form.html:229
+#: app/templates/cv_preview.html:383
+msgid "Formation"
+msgstr "Eğitim"
+
+#: app/templates/cv_form.html:67
+msgid "Expérience"
+msgstr "Deneyim"
+
+#: app/templates/cv_form.html:73 app/templates/cv_preview.html:140
+msgid "Compétences"
+msgstr "Beceriler"
+
+#: app/templates/cv_form.html:79
+msgid "Autre"
+msgstr "Diğer"
+
+#: app/templates/cv_form.html:95
+msgid "Informations Personnelles"
+msgstr "Kişisel Bilgiler"
+
+#: app/templates/cv_form.html:98
+msgid "Photo"
+msgstr "Fotoğraf"
+
+#: app/templates/cv_form.html:102
+msgid "Choisir un fichier"
+msgstr "Dosya Seçin"
+
+#: app/templates/cv_form.html:104
+msgid "Aucun fichier sélectionné"
+msgstr "Dosya seçilmedi"
+
+#: app/templates/cv_form.html:108
+msgid "Aperçu"
+msgstr "Önizleme"
+
+#: app/templates/cv_form.html:123
+msgid "Prénom"
+msgstr "Ad"
+
+#: app/templates/_partials/reference_form.html:12
+#: app/templates/cv_form.html:137
+msgid "Nom"
+msgstr "Soyad"
+
+#: app/templates/cv_form.html:153 app/templates/cv_preview.html:92
+msgid "Email"
+msgstr "E-posta"
+
+#: app/templates/cv_form.html:164 app/templates/cv_preview.html:103
+msgid "Téléphone"
+msgstr "Telefon"
+
+#: app/templates/cv_form.html:177 app/templates/cv_preview.html:114
+msgid "Adresse"
+msgstr "Adres"
+
+#: app/templates/cv_form.html:189 app/templates/cv_preview.html:125
+msgid "Ville"
+msgstr "Şehir"
+
+#: app/templates/cv_form.html:201
+msgid "Résumé professionnel"
+msgstr "kariyer hedefi"
+
+#: app/templates/cv_form.html:214
+msgid "Générer un résumé IA"
+msgstr "AI ile kariyer hedef oluşturun"
+
+#: app/templates/cv_form.html:222 app/templates/cv_form.html:283
+#: app/templates/cv_form.html:368 app/templates/cv_form.html:453
+msgid "Suivant"
+msgstr "İleri"
+
+#: app/templates/_partials/education_form.html:13
+#: app/templates/cv_form.html:236
+msgid "Institution"
+msgstr "Kurum"
+
+#: app/templates/_partials/education_form.html:25
+#: app/templates/cv_form.html:247
+msgid "Diplôme"
+msgstr "Diploma"
+
+#: app/templates/_partials/education_form.html:38
+#: app/templates/_partials/experience_form.html:42
+#: app/templates/cv_form.html:261 app/templates/cv_form.html:322
+msgid "Date de début"
+msgstr "Başlangıç Tarihi"
+
+#: app/templates/_partials/education_form.html:43
+#: app/templates/_partials/experience_form.html:48
+#: app/templates/cv_form.html:265 app/templates/cv_form.html:327
+msgid "Date de fin"
+msgstr "Bitiş Tarihi"
+
+#: app/templates/cv_form.html:274
+msgid "+ Ajouter une formation"
+msgstr "+ Eğitim Ekle"
+
+#: app/templates/cv_form.html:280 app/templates/cv_form.html:365
+#: app/templates/cv_form.html:450
+msgid "Précédent"
+msgstr "Önceki"
+
+#: app/templates/cv_form.html:291 app/templates/cv_preview.html:317
+msgid "Expérience Professionnelle"
+msgstr "İş Deneyimi"
+
+#: app/templates/_partials/experience_form.html:15
+#: app/templates/_partials/reference_form.html:24
+#: app/templates/cv_form.html:297
+msgid "Entreprise"
+msgstr "Şirket"
+
+#: app/templates/_partials/experience_form.html:27
+#: app/templates/cv_form.html:308
+msgid "Poste"
+msgstr "Pozisyon"
+
+#: app/templates/_partials/experience_form.html:51
+#: app/templates/cv_form.html:330 app/templates/cv_preview.html:338
+#: app/templates/cv_preview.html:404
+msgid "Présent"
+msgstr "Devam"
+
+#: app/templates/_partials/experience_form.html:57
+#: app/templates/cv_form.html:335
+msgid "Poste actuel"
+msgstr "Devam"
+
+#: app/templates/_partials/experience_form.html:63
+#: app/templates/cv_form.html:340 app/templates/payment.html:28
+msgid "Description"
+msgstr "Açıklama"
+
+#: app/templates/cv_form.html:350
+msgid " Générer une description IA"
+msgstr "AI ile açıklama oluştur"
+
+#: app/templates/cv_form.html:359
+msgid " + Ajouter une expérience "
+msgstr " + Deneyim Ekle "
+
+#: app/templates/cv_form.html:378
+msgid "Compétences et Langues"
+msgstr "Beceriler ve Diller"
+
+#: app/templates/_partials/skill_form.html:11 app/templates/cv_form.html:384
+msgid "Compétence"
+msgstr "Beceri"
+
+#: app/templates/_partials/skill_form.html:15 app/templates/cv_form.html:388
+msgid "Communication"
+msgstr "İletişim"
+
+#: app/templates/_partials/skill_form.html:16 app/templates/cv_form.html:389
+msgid "Gestion du temps"
+msgstr "Zaman Yönetimi"
+
+#: app/templates/_partials/skill_form.html:17 app/templates/cv_form.html:390
+msgid "Travail d'équipe"
+msgstr "Takım Çalışması"
+
+#: app/templates/_partials/skill_form.html:18 app/templates/cv_form.html:391
+msgid "Leadership"
+msgstr "Liderlik"
+
+#: app/templates/_partials/skill_form.html:19 app/templates/cv_form.html:392
+msgid "Résolution de problèmes"
+msgstr "Problem Çözme"
+
+#: app/templates/_partials/skill_form.html:20 app/templates/cv_form.html:393
+msgid "Adaptabilité"
+msgstr "Uyum Sağlama"
+
+#: app/templates/_partials/skill_form.html:21 app/templates/cv_form.html:394
+msgid "Créativité"
+msgstr "Yaratıcılık"
+
+#: app/templates/_partials/skill_form.html:22 app/templates/cv_form.html:395
+msgid "Pensée critique"
+msgstr "Eleştirel Düşünme"
+
+#: app/templates/cv_form.html:404
+msgid "+ Ajouter une compétence"
+msgstr "+ Beceri Ekle"
+
+#: app/templates/_partials/language_form.html:11 app/templates/cv_form.html:412
+msgid "Langue"
+msgstr "Dil"
+
+#: app/templates/_partials/language_form.html:15 app/templates/cv_form.html:416
+msgid "Français"
+msgstr "Fransızca"
+
+#: app/templates/_partials/language_form.html:16 app/templates/cv_form.html:417
+msgid "Anglais"
+msgstr "İngilizce"
+
+#: app/templates/_partials/language_form.html:17 app/templates/cv_form.html:418
+msgid "Arabe"
+msgstr "Arapça"
+
+#: app/templates/_partials/language_form.html:18 app/templates/cv_form.html:419
+msgid "Turc"
+msgstr "Türkçe"
+
+#: app/templates/_partials/language_form.html:19 app/templates/cv_form.html:420
+msgid "Espagnol"
+msgstr "İspanyolca"
+
+#: app/templates/_partials/language_form.html:20 app/templates/cv_form.html:421
+msgid "Allemand"
+msgstr "Almanca"
+
+#: app/templates/_partials/language_form.html:21 app/templates/cv_form.html:422
+msgid "Italien"
+msgstr "İtalyanca"
+
+#: app/templates/_partials/language_form.html:22 app/templates/cv_form.html:423
+msgid "Chinois"
+msgstr "Çince"
+
+#: app/templates/_partials/language_form.html:27 app/templates/cv_form.html:428
+msgid "Niveau"
+msgstr "Seviye"
+
+#: app/templates/_partials/language_form.html:34 app/templates/cv_form.html:435
+msgid "Natif"
+msgstr "Anadil"
+
+#: app/templates/cv_form.html:443
+msgid "+ Ajouter une langue"
+msgstr "+ Dil Ekle"
+
+#: app/templates/cv_form.html:461
+msgid "Informations Additionnelles"
+msgstr "Ek Bilgiler"
+
+#: app/templates/cv_form.html:465 app/templates/cv_preview.html:211
+msgid "Certifications"
+msgstr "Sertifikalar"
+
+#: app/templates/cv_form.html:470
+msgid "+ Ajouter une certification"
+msgstr "+ Sertifika Ekle"
+
+#: app/templates/cv_form.html:476
+msgid "Centres d'intérêt"
+msgstr "İlgi Alanları"
+
+#: app/templates/cv_form.html:481
+msgid "++ Ajouter un centre d'intérêt"
+msgstr "++ İlgi Alanı Ekle"
+
+#: app/templates/cv_form.html:487
+msgid "Compétences Logicielles"
+msgstr "Yazılım Becerileri"
+
+#: app/templates/cv_form.html:492
+msgid "+ Ajouter un logiciel"
+msgstr "+ Yazılım Ekle"
+
+#: app/templates/cv_form.html:498 app/templates/cv_preview.html:264
+msgid "Références"
+msgstr "Referanslar"
+
+#: app/templates/cv_form.html:503
+msgid "+ Ajouter une référence "
+msgstr "+ Referans Ekle "
+
+#: app/templates/cv_form.html:510
+msgid " Précédent  "
+msgstr " Önceki  "
+
+#: app/templates/cv_form.html:513
+msgid " Générer le CV  "
+msgstr " CV Oluştur  "
+
+#: app/templates/cv_form.html:523
+msgid "Personnalisation du résumé professionnel"
+msgstr "Profesyonel Özet Özelleştirme"
+
+#: app/templates/cv_form.html:524
+msgid ""
+"Pour mieux personnaliser votre résumé, veuillez nous en dire plus sur "
+"vous :"
+msgstr ""
+"Özetinizi daha iyi kişiselleştirmek için, lütfen bize kendiniz hakkında "
+"daha fazla bilgi verin:"
+
+#: app/templates/cv_form.html:528
+msgid "- Votre domaine d'expertise"
+msgstr "- Uzmanlık alanınız"
+
+#: app/templates/cv_form.html:529
+msgid "- Vos années d'expérience"
+msgstr "- Deneyim yıllarınız"
+
+#: app/templates/cv_form.html:530
+msgid "- Vos principales réalisations"
+msgstr "- Başlıca başarılarınız"
+
+#: app/templates/cv_form.html:538 app/templates/cv_preview.html:53
+msgid "Annuler"
+msgstr "İptal"
+
+#: app/templates/cv_form.html:541
+msgid "Générer"
+msgstr "Oluştur"
+
+#: app/templates/cv_preview.html:3
+msgid "Prévisualisation du CV"
+msgstr "CV'nizi önizleyin"
+
+#: app/templates/cv_preview.html:33
+msgid "Télécharger PDF"
+msgstr "PDF olarak indirin"
+
+#: app/templates/cv_preview.html:34
+msgid "Adapter au poste"
+msgstr "İşe Uyarlayın"
+
+#: app/templates/cv_preview.html:39
+msgid "Personnaliser le CV pour un emploi spécifique"
+msgstr "CV'yi belirli bir işe göre özelleştir"
+
+#: app/templates/cv_preview.html:40
+msgid ""
+"Collez la description du poste ci-dessous pour optimiser votre CV en "
+"fonction de celui-ci."
+msgstr "CV'nizi işe göre optimize etmek için iş tanımını aşağıya yapıştırın."
+
+#: app/templates/cv_preview.html:43
+msgid "Description du poste"
+msgstr "İş İlanı"
+
+#: app/templates/cv_preview.html:48
+msgid "Objectifs de carrière"
+msgstr "Kariyer Hedefi"
+
+#: app/templates/cv_preview.html:48
+msgid "optionnel"
+msgstr "isteğe bağlı"
+
+#: app/templates/cv_preview.html:54
+msgid "Personnaliser mon CV"
+msgstr "CV'nizi iş ilanına göre ayarlayın"
+
+#: app/templates/cv_preview.html:61
+msgid "Personnalisation de votre CV en cours..."
+msgstr "CV'niz özelleştiriliyor..."
+
+#: app/templates/_partials/reference_form.html:36
+#: app/templates/cv_preview.html:88
+msgid "Contact"
+msgstr "İletişim"
+
+#: app/templates/cv_preview.html:159
+msgid "Langues"
+msgstr "Dil"
+
+#: app/templates/cv_preview.html:185
+msgid "Logiciels"
+msgstr "Yazılım Adı"
+
+#: app/templates/cv_preview.html:245
+msgid "Loisirs"
+msgstr "Hobiler"
+
+#: app/templates/cv_preview.html:304
+msgid "Résumé Professionnel"
+msgstr "kariyer hedefi"
+
+#: app/templates/index.html:3
+msgid "CV Generator - Accueil"
+msgstr "CV Oluşturucu - Ana Sayfa"
+
+#: app/templates/index.html:8
+msgid "Créez votre CV professionnel"
+msgstr "Profesyonel CV'nizi oluşturun"
+
+#: app/templates/index.html:11
+msgid "Un outil simple et efficace pour créer un CV qui se démarque"
+msgstr "Öne çıkan bir CV oluşturmak için basit ve etkili bir araç"
+
+#: app/templates/index.html:17
+msgid "Simple à utiliser"
+msgstr "Kullanımı Kolay"
+
+#: app/templates/index.html:18
+msgid "Remplissez simplement le formulaire avec vos informations professionnelles"
+msgstr "Profesyonel bilgilerinizle formu kolayca doldurun"
+
+#: app/templates/index.html:23
+msgid "Compatible Mobile"
+msgstr "Mobil Uyumlu"
+
+#: app/templates/index.html:24
+msgid "Créez votre CV depuis n'importe quel appareil"
+msgstr "Herhangi bir cihazdan CV'nizi oluşturun"
+
+#: app/templates/index.html:29
+msgid "Professionnel"
+msgstr "profesyonel"
+
+#: app/templates/index.html:30
+msgid "Des modèles adaptés au marché du travail sénégalais"
+msgstr "Senegal iş piyasasına uyarlanmış şablonlar"
+
+#: app/templates/index.html:36
+msgid "Commencer votre CV"
+msgstr "CV'nize başlayın"
+
+#: app/templates/index.html:43
+msgid "Comment ça marche ?"
+msgstr "Nasıl çalışır?"
+
+#: app/templates/index.html:49
+msgid "Remplissez le formulaire"
+msgstr "Formu doldurun"
+
+#: app/templates/index.html:53
+msgid "Ajoutez votre photo"
+msgstr "Fotoğrafınızı ekleyin"
+
+#: app/templates/index.html:57
+msgid "Prévisualisez votre CV"
+msgstr "CV'nizi önizleyin"
+
+#: app/templates/index.html:61
+msgid "Téléchargez en PDF"
+msgstr "PDF olarak indirin"
+
+#: app/templates/payment.html:10
+msgid "Paiement pour télécharger votre CV"
+msgstr "Cv'nizi indirmek için ödeme yapın"
+
+#: app/templates/payment.html:14
+msgid "Aperçu de votre CV"
+msgstr "CV'nizin önizlemi"
+
+#: app/templates/payment.html:20
+msgid "Détails du paiement"
+msgstr "Ücret detayları"
+
+#: app/templates/payment.html:24
+msgid "Montant"
+msgstr "Ücret"
+
+#: app/templates/payment.html:35 app/templates/payment.html:89
+msgid "Payer avec Wave"
+msgstr "Wave ile ödeyin"
+
+#: app/templates/payment.html:62
+msgid "Initialisation du paiement"
+msgstr "Işlem devam ediyor"
+
+#: app/templates/payment.html:86
+msgid "Erreur - Réessayez"
+msgstr "Hata - Tekrar Deneyin"
+
+#: app/templates/_partials/certification_form.html:12
+msgid "Nom de la Certification"
+msgstr "Sertifika Adı"
+
+#: app/templates/_partials/certification_form.html:24
+msgid "Émetteur"
+msgstr "Veren Kurum"
+
+#: app/templates/_partials/certification_form.html:36
+msgid "Date"
+msgstr "Tarih"
+
+#: app/templates/_partials/experience_form.html:73
+msgid "Générer une description IA"
+msgstr "AI ile açıklama oluştur"
+
+#: app/templates/_partials/hobby_form.html:12
+msgid "Nom du loisir"
+msgstr "Hobi Adı"
+
+#: app/templates/_partials/hobby_form.html:16
+msgid "Lecture"
+msgstr "Okuma"
+
+#: app/templates/_partials/hobby_form.html:17
+msgid "Sport"
+msgstr "Spor"
+
+#: app/templates/_partials/hobby_form.html:18
+msgid "Voyage"
+msgstr "Seyahat"
+
+#: app/templates/_partials/hobby_form.html:19
+msgid "Musique"
+msgstr "Müzik"
+
+#: app/templates/_partials/hobby_form.html:20
+msgid "Cinéma"
+msgstr "Sinema"
+
+#: app/templates/_partials/hobby_form.html:21
+msgid "Cuisine"
+msgstr "Yemek Pişirme"
+
+#: app/templates/_partials/hobby_form.html:22
+msgid "Dessin"
+msgstr "Çizim"
+
+#: app/templates/_partials/hobby_form.html:23
+msgid "Photographie"
+msgstr "Fotoğrafçılık"
+
+#: app/templates/_partials/software_form.html:12
+msgid "Nom du logiciel"
+msgstr "Yazılım Adı"
+
+#: app/templates/_partials/software_form.html:24
+msgid "Niveau de compétence"
+msgstr "Beceri Seviyesi"
+
+#~ msgid "Choisir un fichier"
+#~ msgstr "Dosya Seç"
+
+#~ msgid "Aucun fichier sélectionné"
+#~ msgstr "Dosya Seçilmedi"
+
+#~ msgid "Aperçu"
+#~ msgstr "Önizleme"
+
+#~ msgid "Mode édition : Activé/Désactivé"
+#~ msgstr "Düzenleme Modu: Açık/Kapalı"
+
+#~ msgid "Enregistrer les modifications"
+#~ msgstr "Değişiklikleri Kaydet"
+
+#~ msgid "Modifications enregistrées avec succès !"
+#~ msgstr "Değişiklikler başarıyla kaydedildi!"
+
+#~ msgid "Erreur lors de l enregistrement des modifications :"
+#~ msgstr "Değişiklikler kaydedilirken hata oluştu:"
+
+#~ msgid "Erreur inconnue"
+#~ msgstr "Bilinmeyen hata"
+
+#~ msgid "Erreur - Réessayez"
+#~ msgstr "Hata - Tekrar Deneyin"
+
+#~ msgid ""
+#~ "- Votre domaine d'expertise\n"
+#~ "- Vos années d'expérience\n"
+#~ "- Vos principales réalisations"
+#~ msgstr ""
+#~ "- Uzmanlık alanınız\n"
+#~ "- Deneyim yıllarınız\n"
+#~ "- Başlıca başarılarınız"
+
+#~ msgid "Paiement requis avant de télécharger le PDF"
+#~ msgstr "PDF yi indirmeden önce ödeme yapmanız gerekiyor"
+
+#~ msgid "Le mode test n'est pas disponible"
+#~ msgstr "Test modu mevcut değil"
+
+#~ msgid "Quitter le mode édition"
+#~ msgstr "Düzenleme Modundan Çık"
+
+#~ msgid "Modifier le CV"
+#~ msgstr "CV\\'yi Düzenle"
+
+#~ msgid "Modifications enregistrées avec succès!"
+#~ msgstr "Değişiklikler başarıyla kaydedildi!"
+
+#~ msgid "Erreur lors de l enregistrement des modifications:"
+#~ msgstr "Değişiklikler kaydedilirken hata oluştu:"
+
+#~ msgid "Génération du CV"
+#~ msgstr "CV Oluşturuluyor"
+
+#~ msgid "Générer le contenu"
+#~ msgstr "İçerik Oluştur"
+
+#~ msgid "Génération en cours..."
+#~ msgstr "oluşturuluyor...."
+
+#~ msgid "janvier"
+#~ msgstr "Ocak"
+
+#~ msgid "février"
+#~ msgstr "Şubat"
+
+#~ msgid "mars"
+#~ msgstr "Mart"
+
+#~ msgid "avril"
+#~ msgstr "Nisan"
+
+#~ msgid "mai"
+#~ msgstr "Mayıs"
+
+#~ msgid "juin"
+#~ msgstr "Haziran"
+
+#~ msgid "juillet"
+#~ msgstr "Temmuz"
+
+#~ msgid "août"
+#~ msgstr "Ağustos"
+
+#~ msgid "septembre"
+#~ msgstr "Eylül"
+
+#~ msgid "octobre"
+#~ msgstr "Ekim"
+
+#~ msgid "novembre"
+#~ msgstr "Kasım"
+
+#~ msgid "décembre"
+#~ msgstr "Aralık"
+
+#~ msgid "Di"
+#~ msgstr "Paz"
+
+#~ msgid "Lu"
+#~ msgstr "Pzt"
+
+#~ msgid "Ma"
+#~ msgstr "Sal"
+
+#~ msgid "Me"
+#~ msgstr "Çar"
+
+#~ msgid "Je"
+#~ msgstr "Per"
+
+#~ msgid "Ve"
+#~ msgstr "Cum"
+
+#~ msgid "Sa"
+#~ msgstr "Cmt"
+
+#~ msgid "Sélectionner une date"
+#~ msgstr "Bir tarih seçin"
+
+#~ msgid "Activer le mode test"
+#~ msgstr "Düzenleme Modunu aktifleştir"
+

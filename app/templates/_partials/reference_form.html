@@ -1,0 +1,46 @@
+<div class="field-entry reference-entry grid gap-4 mb-4 relative border p-4 rounded">
+    <button type="button"
+            class="delete-field absolute top-2 right-2 text-red-600 hover:text-red-800"
+            data-field-type="reference"
+            data-field-id="{{ form.name.id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <div class="mb-4">
+        {{ form.name.label(_("Nom"), class="block text-gray-700 font-bold mb-2") }}
+        {{ form.name(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+        {% if form.name.errors %}
+            <ul class="text-red-500 text-sm mt-1">
+                {% for error in form.name.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="mb-4">
+        {{ form.company.label(_("Entreprise"), class="block text-gray-700 font-bold mb-2") }}
+        {{ form.company(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+        {% if form.company.errors %}
+            <ul class="text-red-500 text-sm mt-1">
+                {% for error in form.company.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="mb-4">
+        {{ form.contact.label(_("Contact"), class="block text-gray-700 font-bold mb-2") }}
+        {{ form.contact(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+        {% if form.contact.errors %}
+            <ul class="text-red-500 text-sm mt-1">
+                {% for error in form.contact.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>

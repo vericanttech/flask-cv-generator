@@ -1,0 +1,38 @@
+<div class="field-entry language-entry grid md:grid-cols-2 gap-4 mb-4 relative border p-4 rounded">
+    <button type="button"
+            class="delete-field absolute top-2 right-2 text-red-600 hover:text-red-800"
+            data-field-type="language"
+            data-field-id="{{ form.language.id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    <div class="mb-4 md:mb-0">
+        {{ form.language.label(class="block text-gray-700 font-bold mb-2", text=_('Langue')) }}
+        <div class="relative">
+            {{ form.language(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline language-input") }}
+            <div class="language-dropdown absolute hidden bg-white border rounded w-full mt-1 shadow-md z-10">
+                <button type="button" data-language="{{ _('Français') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Français') }}</button>
+                <button type="button" data-language="{{ _('Anglais') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Anglais') }}</button>
+                <button type="button" data-language="{{ _('Arabe') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Arabe') }}</button>
+                <button type="button" data-language="{{ _('Turc') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Turc') }}</button>
+                <button type="button" data-language="{{ _('Espagnol') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Espagnol') }}</button>
+                <button type="button" data-language="{{ _('Allemand') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Allemand') }}</button>
+                <button type="button" data-language="{{ _('Italien') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Italien') }}</button>
+                <button type="button" data-language="{{ _('Chinois') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Chinois') }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="mb-4 md:mb-0">
+        {{ form.level.label(class="block text-gray-700 font-bold mb-2", text=_('Niveau')) }}
+        <div class="relative">
+            {{ form.level(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline level-input") }}
+            <div class="level-dropdown absolute hidden bg-white border rounded w-full mt-1 shadow-md z-10">
+                <button type="button" data-level="{{ _('Débutant') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Débutant') }}</button>
+                <button type="button" data-level="{{ _('Intermédiaire') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Intermédiaire') }}</button>
+                <button type="button" data-level="{{ _('Avancé') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Avancé') }}</button>
+                <button type="button" data-level="{{ _('Natif') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Natif') }}</button>
+            </div>
+        </div>
+    </div>
+</div>

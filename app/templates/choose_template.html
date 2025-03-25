@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Choisir un modèle') }} | CV Generator{% endblock %}
+
+{% block extra_head %}
+<style>
+    .template-card {
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .template-card:hover {
+        transform: scale(1.03);
+    }
+
+    .template-card .select-template {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .template-card:hover .select-template {
+        opacity: 1;
+    }
+
+    .template-image-container {
+        height: 400px; /* Increased height to show full image */
+        overflow: hidden;
+    }
+
+    .template-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Changed to contain to show the entire image */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold text-center mb-8">{{ _('Choisissez un modèle de CV') }}</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Template 1 -->
+    <div class="template-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="template-image-container relative">
+            <img src="{{ url_for('static', filename='images/templates/generated_cv.jpg') }}" alt="Minimal Template" class="template-image">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <button class="select-template px-4 py-2 bg-accent text-primary font-semibold rounded-md" data-template="template1">{{ _('Sélectionner') }}</button>
+            </div>
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="text-xl font-semibold">{{ _('Minimaliste') }}</h3>
+        </div>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="template-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="template-image-container relative">
+            <img src="{{ url_for('static', filename='images/templates/generated_cv.jpg') }}" alt="Professional Template" class="template-image">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <button class="select-template px-4 py-2 bg-accent text-primary font-semibold rounded-md" data-template="template2">{{ _('Sélectionner') }}</button>
+            </div>
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="text-xl font-semibold">{{ _('Professional') }}</h3>
+        </div>
+    </div>
+
+    <!-- Template 3 -->
+    <div class="template-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="template-image-container relative">
+            <img src="{{ url_for('static', filename='images/templates/generated_cv.jpg') }}" alt="Creative Template" class="template-image">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <button class="select-template px-4 py-2 bg-accent text-primary font-semibold rounded-md" data-template="template3">{{ _('Sélectionner') }}</button>
+            </div>
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="text-xl font-semibold">{{ _('Créatif') }}</h3>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Template selection functionality
+    document.querySelectorAll('.select-template').forEach(button => {
+        button.addEventListener('click', function() {
+            const templateId = this.getAttribute('data-template');
+
+            // Store the selected template in session storage
+            sessionStorage.setItem('selectedTemplate', templateId);
+
+            // Make AJAX request to store in Flask session
+            fetch('/set_template', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ template: templateId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirect to the create CV page
+                    window.location.href = "{{ url_for('main.create_cv') }}";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+{% endblock %}

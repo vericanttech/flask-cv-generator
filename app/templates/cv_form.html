@@ -1,0 +1,576 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Créer votre CV') }}{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cv_styles.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom-datepicker.css') }}">
+<style>
+    .message-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+.message.error {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    color: #b91c1c;
+}
+
+.message.success {
+    background-color: #dcfce7;
+    border-left: 4px solid #22c55e;
+    color: #166534;
+}
+
+.close-message {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div x-data="{ currentSection: 'personal' }">
+    <div class="mb-8">
+        <div class="flex justify-between mb-2">
+            <button onclick="showSection('personal')"
+                    class="text-xl md:text-2xl tooltip nav-btn"
+                    data-section="personal"
+                    data-tooltip="{{ _('Profil') }}">
+                <i class="fas fa-user"></i>
+            </button>
+            <button onclick="showSection('education')"
+                    class="text-xl md:text-2xl tooltip nav-btn"
+                    data-section="education"
+                    data-tooltip="{{ _('Formation') }}">
+                <i class="fas fa-graduation-cap"></i>
+            </button>
+            <button onclick="showSection('experience')"
+                    class="text-xl md:text-2xl tooltip nav-btn"
+                    data-section="experience"
+                    data-tooltip="{{ _('Expérience') }}">
+                <i class="fas fa-briefcase"></i>
+            </button>
+            <button onclick="showSection('skills')"
+                    class="text-xl md:text-2xl tooltip nav-btn"
+                    data-section="skills"
+                    data-tooltip="{{ _('Compétences') }}">
+                <i class="fas fa-tools"></i>
+            </button>
+            <button onclick="showSection('additional')"
+                    class="text-xl md:text-2xl tooltip nav-btn"
+                    data-section="additional"
+                    data-tooltip="{{ _('Autre') }}">
+                <i class="fas fa-file-alt"></i>
+            </button>
+        </div>
+        <div class="h-2 bg-gray-200 rounded-full">
+            <div class="h-full bg-primary rounded-full transition-all progress-bar"></div>
+        </div>
+    </div>
+
+
+    <form method="POST" enctype="multipart/form-data" class="space-y-8">
+        {{ form.csrf_token }}
+
+        <!-- Personal Info Section -->
+        <div class="form-section" id="personal-section">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">{{ _('Informations Personnelles') }}</h2>
+
+        <div class="mb-4">
+            {{ form.photo.label(class="block text-gray-700 font-bold mb-2", text=_("Photo")) }}
+            <div class="custom-file-input-wrapper flex flex-col space-y-2">
+                <div class="flex items-center">
+                    <button type="button" id="custom-button" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">
+                        {{ _("Choisir un fichier") }}
+                    </button>
+                    <span id="custom-text" class="ml-3 text-gray-600 text-sm">{{ _("Aucun fichier sélectionné") }}</span>
+                    {{ form.photo(class="hidden", id="photo") }}
+                </div>
+                <div id="preview-container" class="hidden mt-2">
+                    <img id="image-preview" class="max-h-40 rounded border border-gray-300" src="" alt="{{ _('Aperçu') }}">
+                </div>
+            </div>
+            {% if form.photo.errors %}
+                <ul class="text-red-500 text-sm mt-1">
+                    {% for error in form.photo.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="mb-4 md:mb-0">
+                    <div class="block text-gray-700 font-bold mb-2 flex items-center">
+                        <span class="mr-1">{{ _("Prénom") }}</span>
+                        <span class="text-red-500">*</span>
+                    </div>
+                    {{ form.first_name(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                    {% if form.first_name.errors %}
+                        <ul class="text-red-500 text-sm mt-1">
+                            {% for error in form.first_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="mb-4 md:mb-0">
+                    <div class="block text-gray-700 font-bold mb-2 flex items-center">
+                        <span class="mr-1">{{ _("Nom") }}</span>
+                        <span class="text-red-500">*</span>
+                    </div>
+                    {{ form.last_name(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                    {% if form.last_name.errors %}
+                        <ul class="text-red-500 text-sm mt-1">
+                            {% for error in form.last_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="mb-4 md:mb-0">
+                        {{ form.email.label(class="block text-gray-700 font-bold mb-2", text=_("Email")) }}
+                        {{ form.email(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                        {% if form.email.errors %}
+                            <ul class="text-red-500 text-sm mt-1">
+                                {% for error in form.email.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="mb-4 md:mb-0">
+                        {{ form.phone.label(class="block text-gray-700 font-bold mb-2", text=_("Téléphone")) }}
+                        {{ form.phone(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                        {% if form.phone.errors %}
+                            <ul class="text-red-500 text-sm mt-1">
+                                {% for error in form.phone.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    {{ form.address.label(class="block text-gray-700 font-bold mb-2", text=_("Adresse")) }}
+                    {{ form.address(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                    {% if form.address.errors %}
+                        <ul class="text-red-500 text-sm mt-1">
+                            {% for error in form.address.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4">
+                    {{ form.city.label(class="block text-gray-700 font-bold mb-2", text=_("Ville")) }}
+                    {{ form.city(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                    {% if form.city.errors %}
+                        <ul class="text-red-500 text-sm mt-1">
+                            {% for error in form.city.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4">
+                    {{ form.professional_summary.label(class="block text-gray-700 font-bold mb-2", text=_("Résumé professionnel")) }}
+                    {{ form.professional_summary(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32") }}
+                    {% if form.professional_summary.errors %}
+                        <ul class="text-red-500 text-sm mt-1">
+                            {% for error in form.professional_summary.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <button type="button" class="btn-secondary mt-4 flex items-center justify-center gap-2 px-6 py-2 text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded-lg shadow-md transition duration-300 ease-in-out" id="generate-content">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-pulse" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm2-1a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1H4zm5 4h6a1 1 0 110 2H9a1 1 0 010-2zM7 9a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+                        </svg>
+                        {{ _('Générer un résumé IA') }}
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="button" class="btn-primary next-section" onclick="nextSection()">
+                    {{ _('Suivant') }}
+                </button>
+            </div>
+        </div>
+
+        <div class="form-section" id="education-section" style="display: none;">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">{{ _('Formation') }}</h2>
+
+                <div id="education-forms">
+                    {% for education_form in form.education %}
+                        <div class="education-entry mb-6 p-4 border rounded">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="mb-4 md:mb-0">
+                                    {{ education_form.institution.label(class="block text-gray-700 font-bold mb-2", text=_("Institution")) }}
+                                    {{ education_form.institution(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                    {% if education_form.institution.errors %}
+                                        <ul class="text-red-500 text-sm mt-1">
+                                            {% for error in education_form.institution.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-4 md:mb-0">
+                                    {{ education_form.degree.label(class="block text-gray-700 font-bold mb-2", text=_("Diplôme")) }}
+                                    {{ education_form.degree(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                    {% if education_form.degree.errors %}
+                                        <ul class="text-red-500 text-sm mt-1">
+                                            {% for error in education_form.degree.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="mb-4 md:mb-0">
+                                    {{ education_form.start_date.label(class="block text-gray-700 font-bold mb-2", text=_("Date de début")) }}
+                                    {{ education_form.start_date(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                </div>
+                                <div class="mb-4 md:mb-0">
+                                    {{ education_form.end_date.label(class="block text-gray-700 font-bold mb-2", text=_("Date de fin")) }}
+                                    {{ education_form.end_date(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button type="button" class="btn-secondary mt-4" id="add-education">
+                    {{ _('+ Ajouter une formation') }}
+                </button>
+            </div>
+
+            <div class="flex justify-between">
+                <button type="button" class="btn-secondary prev-section" onclick="prevSection()">
+                    {{ _('Précédent') }}
+                </button>
+                <button type="button" class="btn-primary next-section" onclick="nextSection()">
+                    {{ _('Suivant') }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="form-section" id="experience-section" style="display: none;">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">{{ _('Expérience Professionnelle') }}</h2>
+                <div id="experience-forms">
+                    {% for experience_form in form.experience %}
+                        <div class="experience-entry mb-6 p-4 border rounded">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="mb-4 md:mb-0">
+                                    {{ experience_form.company.label(class="block text-gray-700 font-bold mb-2", text=_("Entreprise")) }}
+                                    {{ experience_form.company(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                    {% if experience_form.company.errors %}
+                                        <ul class="text-red-500 text-sm mt-1">
+                                            {% for error in experience_form.company.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                                <div class="mb-4 md:mb-0">
+                                    {{ experience_form.position.label(class="block text-gray-700 font-bold mb-2", text=_("Poste")) }}
+                                    {{ experience_form.position(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                    {% if experience_form.position.errors %}
+                                        <ul class="text-red-500 text-sm mt-1">
+                                            {% for error in experience_form.position.errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <div class="mb-4 md:mb-0">
+                                    {{ experience_form.start_date.label(class="block text-gray-700 font-bold mb-2", text=_("Date de début")) }}
+                                    {{ experience_form.start_date(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+                                </div>
+                                <div class="mb-4 md:mb-0 end-date-container">
+                                    <div>
+                                        {{ experience_form.end_date.label(class="block text-gray-700 font-bold mb-2", text=_("Date de fin")) }}
+                                        {{ experience_form.end_date(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline end-date-field") }}
+                                    </div>
+                                    <span class="hidden text-blue-600 italic present-text ml-2">{{ _('Présent') }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 flex items-center">
+                                {{ experience_form.is_current.label(class="flex items-center text-gray-700 font-bold mr-2", text=_("Poste actuel")) }}
+                                {{ experience_form.is_current(class="form-checkbox h-5 w-5 text-blue-600 current-position-checkbox") }}
+                            </div>
+
+                            <div class="mt-4">
+                                {{ experience_form.description_.label(class="block text-gray-700 font-bold mb-2", text=_("Description")) }}
+                                <textarea name="experience-{{ loop.index0 }}-description_" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32"></textarea>
+                                {% if experience_form.description_.errors %}
+                                    <ul class="text-red-500 text-sm mt-1">
+                                        {% for error in experience_form.description_.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                <button type="button" class="content-btn mt-4 generate-experience-content" data-index="{{ loop.index }}">
+                                    {{ _(' Générer une description IA') }}
+                                </button>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button type="button" class="btn-secondary mt-4" id="add-experience">
+                    {{ _(' + Ajouter une expérience ') }}
+                </button>
+            </div>
+
+            <div class="flex justify-between">
+                <button type="button" class="btn-secondary prev-section" onclick="prevSection()">
+                    {{ _('Précédent') }}
+                </button>
+                <button type="button" class="btn-primary next-section" onclick="nextSection()">
+                    {{ _('Suivant') }}
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Skills Section -->
+
+<div class="form-section" id="skills-section" style="display: none;">
+    <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-bold mb-4">{{ _('Compétences et Langues') }}</h2>
+
+        <div id="skills-forms" class="mb-6">
+            {% for skill_form in form.skills %}
+                <div class="skill-entry mb-4">
+                    <div class="mb-4">
+                        {{ skill_form.skill.label(class="block text-gray-700 font-bold mb-2", text=_('Compétence')) }}
+                        <div class="relative">
+                            {{ skill_form.skill(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline skill-input") }}
+                            <div class="skill-dropdown absolute hidden bg-white border rounded w-full mt-1 shadow-md z-10">
+                                <button type="button" data-skill="{{ _('Communication') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Communication') }}</button>
+                                <button type="button" data-skill="{{ _('Gestion du temps') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Gestion du temps') }}</button>
+                                <button type="button" data-skill="{{ _('Travail d\'équipe') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Travail d\'équipe') }}</button>
+                                <button type="button" data-skill="{{ _('Leadership') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Leadership') }}</button>
+                                <button type="button" data-skill="{{ _('Résolution de problèmes') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Résolution de problèmes') }}</button>
+                                <button type="button" data-skill="{{ _('Adaptabilité') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Adaptabilité') }}</button>
+                                <button type="button" data-skill="{{ _('Créativité') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Créativité') }}</button>
+                                <button type="button" data-skill="{{ _('Pensée critique') }}" class="skill-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Pensée critique') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="button" class="btn-secondary mt-4" id="add-skill">
+            {{ _('+ Ajouter une compétence') }}
+        </button>
+
+        <div class="mt-6">
+            <div id="languages-container">
+                {% for language_form in form.languages %}
+                    <div class="language-entry grid grid-cols-2 gap-4 mb-4">
+                        <div class="mb-4 md:mb-0">
+                            {{ language_form.language.label(class="block text-gray-700 font-bold mb-2", text=_('Langue')) }}
+                            <div class="relative">
+                                {{ language_form.language(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline language-input") }}
+                                <div class="language-dropdown absolute hidden bg-white border rounded w-full mt-1 shadow-md z-10">
+                                    <button type="button" data-language="{{ _('Français') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Français') }}</button>
+                                    <button type="button" data-language="{{ _('Anglais') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Anglais') }}</button>
+                                    <button type="button" data-language="{{ _('Arabe') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Arabe') }}</button>
+                                    <button type="button" data-language="{{ _('Turc') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Turc') }}</button>
+                                    <button type="button" data-language="{{ _('Espagnol') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Espagnol') }}</button>
+                                    <button type="button" data-language="{{ _('Allemand') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Allemand') }}</button>
+                                    <button type="button" data-language="{{ _('Italien') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Italien') }}</button>
+                                    <button type="button" data-language="{{ _('Chinois') }}" class="language-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Chinois') }}</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4 md:mb-0">
+                            {{ language_form.level.label(class="block text-gray-700 font-bold mb-2", text=_('Niveau')) }}
+                            <div class="relative">
+                                {{ language_form.level(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline level-input") }}
+                                <div class="level-dropdown absolute hidden bg-white border rounded w-full mt-1 shadow-md z-10">
+                                    <button type="button" data-level="{{ _('Débutant') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Débutant') }}</button>
+                                    <button type="button" data-level="{{ _('Intermédiaire') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Intermédiaire') }}</button>
+                                    <button type="button" data-level="{{ _('Avancé') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Avancé') }}</button>
+                                    <button type="button" data-level="{{ _('Natif') }}" class="level-option block w-full text-left py-2 px-4 hover:bg-gray-100">{{ _('Natif') }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="button" class="btn-secondary mt-4" id="add-language">
+                {{ _('+ Ajouter une langue') }}
+            </button>
+        </div>
+    </div>
+
+    <div class="flex justify-between">
+        <button type="button" class="btn-secondary prev-section" onclick="prevSection()">
+            {{ _('Précédent') }}
+        </button>
+        <button type="button" class="btn-primary next-section" onclick="nextSection()">
+            {{ _('Suivant') }}
+        </button>
+    </div>
+</div>
+
+        <!-- Additional Information Section -->
+        <div class="form-section" id="additional-section" style="display: none;">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">{{ _('Informations Additionnelles') }}</h2>
+
+                <!-- Certifications -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">{{ _('Certifications') }}</h3>
+                    <div id="certifications-container">
+                        <!-- Fields will be added here dynamically -->
+                    </div>
+                    <button type="button" class="btn-secondary mt-4" id="add-certification">
+                        {{ _('+ Ajouter une certification') }}
+                    </button>
+                </div>
+
+                <!-- Hobbies -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">{{ _('Centres d\'intérêt') }}</h3>
+                    <div id="hobbies-container">
+                        <!-- Fields will be added here dynamically -->
+                    </div>
+                    <button type="button" class="btn-secondary mt-4" id="add-hobby">
+                        {{ _('++ Ajouter un centre d\'intérêt') }}
+                    </button>
+                </div>
+
+                <!-- Software Skills Section -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">{{ _('Compétences Logicielles') }}</h3>
+                    <div id="software-container">
+                        <!-- Software fields will be added here dynamically -->
+                    </div>
+                    <button type="button" class="btn-secondary mt-4" id="add-software">
+                        {{ _('+ Ajouter un logiciel') }}
+                    </button>
+                </div>
+
+                <!-- References -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">{{ _('Références') }}</h3>
+                    <div id="references-container">
+                        <!-- Partial templates will be loaded here dynamically -->
+                    </div>
+                    <button type="button" class="btn-secondary mt-4" id="add-reference">
+                        {{ _('+ Ajouter une référence ') }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button type="button" class="btn-secondary prev-section" onclick="prevSection()">
+                     {{ _(' Précédent  ') }}
+                </button>
+                <button type="submit" class="btn-primary" onclick="submitForm(event)">
+                   {{ _(' Générer le CV  ') }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal for professional summary guidance -->
+<div id="guidanceModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 shadow-xl">
+        <h3 class="text-xl font-bold mb-4">{{ _('Personnalisation du résumé professionnel') }}</h3>
+        <p class="text-gray-600 mb-4">{{ _('Pour mieux personnaliser votre résumé, veuillez nous en dire plus sur vous :') }}</p>
+
+        <!-- Label for better guidance -->
+        <label for="guidanceText" class="text-gray-700 font-medium mb-2 block">
+            {{ _('- Votre domaine d\'expertise') }}<br>
+            {{ _('- Vos années d\'expérience') }}<br>
+            {{ _('- Vos principales réalisations') }}
+        </label>
+        <textarea
+            id="guidanceText"
+            class="w-full h-32 p-3 border rounded-lg mb-4 focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+
+        <div class="flex justify-end space-x-3">
+            <button id="cancelGuidance" class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
+                {{ _('Annuler') }}
+            </button>
+            <button id="submitGuidance" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                {{ _('Générer') }}
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<style>
+/* Add this to your CSS file */
+.tooltip {
+    position: relative;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+}
+</style>
+<script>
+    const translations = {{ translations|tojson|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/cv-form-main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/custom-datepicker.js') }}"></script>
+{% endblock %}

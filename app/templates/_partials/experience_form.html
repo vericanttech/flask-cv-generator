@@ -1,0 +1,76 @@
+<div class="field-entry experience-entry mb-4 relative border p-4 rounded">
+    <!-- Delete button -->
+    <button type="button"
+            class="delete-field absolute top-2 right-2 text-red-600 hover:text-red-800"
+            data-field-type="experience"
+            data-field-id="{{ form.id }}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+
+    <!-- First row: Company and Position -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mb-4 md:mb-0">
+            {{ form.company.label(class="block text-gray-700 font-bold mb-2", text=_("Entreprise")) }}
+            {{ form.company(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            {% if form.company.errors %}
+                <ul class="text-red-500 text-sm mt-1">
+                    {% for error in form.company.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="mb-4 md:mb-0">
+            {{ form.position.label(class="block text-gray-700 font-bold mb-2", text=_("Poste")) }}
+            {{ form.position(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            {% if form.position.errors %}
+                <ul class="text-red-500 text-sm mt-1">
+                    {% for error in form.position.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Second row: Dates -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="mb-4 md:mb-0">
+            {{ form.start_date.label(class="block text-gray-700 font-bold mb-2", text=_("Date de début")) }}
+            {{ form.start_date(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+        </div>
+
+        <div class="mb-4 md:mb-0 end-date-container">
+            <div>
+                {{ form.end_date.label(class="block text-gray-700 font-bold mb-2", text=_("Date de fin")) }}
+                {{ form.end_date(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline end-date-field") }}
+            </div>
+            <span class="hidden text-blue-600 italic mt-1 present-text">{{ _('Présent') }}</span>
+        </div>
+    </div>
+
+    <!-- Current position checkbox -->
+    <div class="mt-4 flex items-center">
+        {{ form.is_current.label(class="flex items-center text-gray-700 font-bold mr-2", text=_("Poste actuel")) }}
+        {{ form.is_current(class="form-checkbox h-5 w-5 text-blue-600 current-position-checkbox") }}
+    </div>
+
+    <!-- Description -->
+    <div class="mt-4">
+        {{ form.description_.label(class="block text-gray-700 font-bold mb-2", text=_("Description")) }}
+        {{ form.description_(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32") }}
+        {% if form.description_.errors %}
+            <ul class="text-red-500 text-sm mt-1">
+                {% for error in form.description_.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <button type="button" class="content-btn mt-4 generate-experience-content" data-index="{{ index }}">
+            {{ _('Générer une description IA') }}
+        </button>
+    </div>
+</div>

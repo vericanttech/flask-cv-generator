@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Background Shape -->
+  <rect width="300" height="300" fill="#0D5EAF" rx="30" ry="30"/>
+  
+  <!-- Document/CV Symbol -->
+  <rect x="60" y="80" width="180" height="220" fill="#FFFFFF" rx="10" ry="10"/>
+  
+  <!-- French Text on CV -->
+  <text x="90" y="120" font-family="Arial, sans-serif" font-size="12" fill="#000000">
+    <tspan x="90" dy="0">Nom: </tspan>
+    <tspan x="90" dy="20">Prenom: </tspan>
+    <tspan x="90" dy="20">Profession: </tspan>
+    <tspan x="90" dy="20">Competences: </tspan>
+  </text>
+  
+  <!-- Subtle AI/Tech Overlay - Now positioned differently -->
+  <path d="M120 200 L180 200 Q190 200, 190 210 L190 240 Q190 250, 180 250 L120 250 Q110 250, 110 240 L110 210 Q110 200, 120 200" 
+        fill="none" stroke="#0D5EAF" stroke-width="2" stroke-dasharray="4,4"/>
+  
+  <!-- Circuit/Network Lines -->
+  <line x1="100" y1="270" x2="200" y2="270" stroke="#0D5EAF" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="110" cy="270" r="3" fill="#0D5EAF"/>
+  <circle cx="190" cy="270" r="3" fill="#0D5EAF"/>
+  
+  <!-- Senegalese Flag Colors Accent -->
+  <path d="M0 0 L100 0 L0 100 Z" fill="#00853F"/>
+  <path d="M300 300 L200 300 L300 200 Z" fill="#EF3340"/>
+  
+  <!-- Star Symbolizing Guidance/Aspiration -->
+  <polygon points="50,50 57,68 75,68 61,79 67,97 50,86 33,97 39,79 25,68 43,68" 
+           fill="#FBED21" transform="translate(200,20) scale(0.7)"/>
+</svg>
