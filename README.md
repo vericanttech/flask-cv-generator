@@ -1,7 +1,7 @@
 # Flask CV Generator
 
 ## Project Description
-A Flask-based web application for generating professional CVs.
+A Flask-based AI powered web application for generating professional CVs
 
 ## Setup Instructions
 
